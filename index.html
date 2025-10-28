@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OcioHub — Tu tablero de ocio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🧩 OcioHub</h1>
+    <div class="header-actions">
+      <button id="toggle-theme" aria-pressed="false" title="Cambiar tema">🌓</button>
+      <button id="export-json" title="Exportar mis planes">⬇️ Exportar</button>
+      <label class="import-btn" title="Importar desde JSON">
+        ⬆️ Importar
+        <input id="import-json" type="file" accept="application/json" />
+      </label>
+    </div>
+  </header>
+
+  <section class="controls">
+    <form id="plan-form" autocomplete="off" aria-label="Crear plan de ocio">
+      <input id="title" name="title" type="text" placeholder="Título: p. ej., Maratón de Studio Ghibli" required />
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Categoría</option>
+        <option value="Cine">Cine</option>
+        <option value="Videojuegos">Videojuegos</option>
+        <option value="Lectura">Lectura</option>
+        <option value="Deporte">Deporte</option>
+        <option value="Música">Música</option>
+        <option value="DIY">DIY</option>
+      </select>
+      <select id="difficulty" name="difficulty">
+        <option value="Fácil">Fácil</option>
+        <option value="Media" selected>Media</option>
+        <option value="Difícil">Difícil</option>
+      </select>
+      <input id="deadline" name="deadline" type="date" />
+      <input id="link" name="link" type="url" placeholder="Enlace (opcional)" />
+      <button type="submit">➕ Añadir</button>
+    </form>
+
+    <div class="filters" role="region" aria-label="Filtros y búsqueda">
+      <input id="search" type="search" placeholder="Buscar por título…" />
+      <select id="filter-category">
+        <option value="Todas">Todas las categorías</option>
+        <option value="Cine">Cine</option>
+        <option value="Videojuegos">Videojuegos</option>
+        <option value="Lectura">Lectura</option>
+        <option value="Deporte">Deporte</option>
+        <option value="Música">Música</option>
+        <option value="DIY">DIY</option>
+      </select>
+      <select id="filter-difficulty">
+        <option value="Todas">Todas las dificultades</option>
+        <option value="Fácil">Fácil</option>
+        <option value="Media">Media</option>
+        <option value="Difícil">Difícil</option>
+      </select>
+      <button id="clear-all" class="danger">🗑️ Vaciar tablero</button>
+    </div>
+  </section>
+
+  <main class="board" aria-label="Tablero Kanban">
+    <section class="column" data-status="todo" aria-labelledby="col-todo">
+      <h2 id="col-todo">Por hacer</h2>
+      <div class="dropzone" role="list" aria-describedby="help-drag"></div>
+    </section>
+    <section class="column" data-status="doing" aria-labelledby="col-doing">
+      <h2 id="col-doing">En curso</h2>
+      <div class="dropzone" role="list"></div>
+    </section>
+    <section class="column" data-status="done" aria-labelledby="col-done">
+      <h2 id="col-done">Hecho</h2>
+      <div class="dropzone" role="list"></div>
+    </section>
+  </main>
+
+  <section class="stats" aria-label="Estadísticas">
+    <canvas id="stats-canvas" width="800" height="220" aria-label="Estadísticas por categoría"></canvas>
+    <small id="help-drag">Consejo: arrastra tarjetas entre columnas para cambiar su estado.</small>
+  </section>
+
+  <footer class="app-footer">
+    <p>
+      Hecho con ❤️ para tu ocio. Inspirado en el flujo de trabajo de GitHub (To-Do → Doing → Done).
+      Guarda todo en tu navegador (localStorage), sin servidores.
+    </p>
+  </footer>
+
+  <!-- Nota: el archivo se llama "script.javascript" tal como pediste -->
+  <script src="script.javascript"></script>
+</body>
+</html>
