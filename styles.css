@@ -1,0 +1,105 @@
+:root{
+  --bg: #0f172a;
+  --bg-soft:#111827;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --card:#111827;
+  --accent:#3b82f6;
+  --accent-2:#22c55e;
+  --danger:#ef4444;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  background: radial-gradient(1200px 600px at 10% -10%, #1f2937, transparent), var(--bg);
+  color:var(--text);
+  line-height:1.35;
+}
+.app-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px; position:sticky; top:0; z-index:5;
+  background:linear-gradient(180deg, rgba(15,23,42,.98) 0, rgba(15,23,42,.85) 100%);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid #1f2937;
+}
+h1{margin:0; font-size: clamp(20px, 2.4vw, 28px)}
+.header-actions{display:flex; gap:8px; align-items:center}
+.header-actions button, .import-btn{
+  background:var(--card); color:var(--text); border:1px solid #263041;
+  border-radius:12px; padding:8px 12px; cursor:pointer;
+  box-shadow: var(--shadow); transition: transform .1s ease, background .2s ease;
+}
+.header-actions button:hover, .import-btn:hover{transform: translateY(-1px)}
+.import-btn{display:inline-flex; gap:8px; align-items:center}
+.import-btn input{display:none}
+
+.controls{
+  padding:16px 20px; display:grid; gap:12px; border-bottom:1px solid #1f2937;
+}
+#plan-form{
+  display:grid; grid-template-columns: 1.2fr repeat(3, 1fr) 1.4fr auto; gap:10px;
+}
+#plan-form input, #plan-form select, #plan-form button{
+  padding:10px 12px; border-radius:12px; border:1px solid #263041; background:var(--card); color:var(--text)
+}
+#plan-form button{background:linear-gradient(90deg, var(--accent), #60a5fa); border:none; font-weight:600}
+.filters{display:flex; gap:10px; flex-wrap:wrap}
+.filters input, .filters select, .filters button{
+  padding:10px 12px; border-radius:12px; border:1px solid #263041; background:var(--card); color:var(--text)
+}
+.filters .danger{background: linear-gradient(90deg, #ef4444, #f59e0b); border:none; color:white}
+
+.board{
+  padding:16px 20px; display:grid; gap:16px;
+  grid-template-columns: repeat(3, minmax(260px,1fr));
+}
+.column{
+  background: linear-gradient(180deg, #0b1220, #0a1020);
+  border:1px solid #1f2937; border-radius:16px; box-shadow: var(--shadow); min-height:280px;
+  display:flex; flex-direction:column;
+}
+.column h2{margin:12px; font-size:18px; color:#cbd5e1; letter-spacing:.3px}
+.dropzone{display:flex; flex-direction:column; gap:10px; padding:12px}
+.card{
+  background:linear-gradient(180deg, #111827, #0f172a);
+  border:1px solid #253044; border-radius:16px; padding:12px; box-shadow: var(--shadow);
+  display:grid; grid-template-columns: 1fr auto; gap:8px;
+}
+.card.dragging{opacity:.6; transform: scale(.98)}
+.card .title{font-weight:600}
+.card .meta{font-size:12px; color:var(--muted); display:flex; gap:8px; flex-wrap:wrap}
+.badge{font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid #2b3a55; background:#0e1526}
+.badge.green{border-color:#1d3b2b; background:#0f1f18; color:#a7f3d0}
+.badge.blue{border-color:#1b3356; background:#0e1729; color:#93c5fd}
+.badge.orange{border-color:#4a2b16; background:#1f130a; color:#fdba74}
+.card .actions{display:flex; gap:6px; align-items:center}
+.icon-btn{
+  background:#0d1220; border:1px solid #263041; color:#cbd5e1; border-radius:10px; padding:6px 8px; cursor:pointer;
+}
+.icon-btn:hover{transform: translateY(-1px)}
+.card a{color:#93c5fd; text-decoration:none}
+.card a:hover{text-decoration:underline}
+
+.stats{padding:8px 20px 24px}
+#stats-canvas{width:100%; max-width:980px; background:#0b1220; border:1px solid #1f2937; border-radius:16px; box-shadow: var(--shadow); display:block; margin-inline:auto}
+
+.app-footer{padding:20px; color:#a3b2c7; font-size:14px; text-align:center}
+
+/* Responsive */
+@media (max-width: 900px){
+  #plan-form{grid-template-columns: 1fr 1fr 1fr}
+  #plan-form input#link{grid-column: span 2}
+}
+@media (max-width: 640px){
+  #plan-form{grid-template-columns: 1fr}
+  .board{grid-template-columns: 1fr}
+}
+
+/* Tema claro (activado con clase .light en body) */
+body.light{
+  --bg:#f3f4f6; --bg-soft:#ffffff; --text:#0f172a; --muted:#475569; --card:#ffffff; --accent:#2563eb; --accent-2:#16a34a; --danger:#dc2626;
+  background: radial-gradient(1200px 600px at 10% -10%, #e5e7eb, transparent), var(--bg);
+}
+body.light .app-header{background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8))}
